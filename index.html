@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>flowr</title>
+    <link rel="icon" type="image/png" href="/gfx/favicon.ico" sizes="32x32">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="user-scalable=no, width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+
+    <meta name="application-name" content="flowr.fun">
+    <meta name="description" content="Welcome to flowr, a florr.io clone! Battle enemies and seek the rarest petals to add to your collection!">
+    <meta name="msapplication-TileColor" content="#181818">
+    <meta name="theme-color" content="#181818">
+
+    <link href="style.css" rel="stylesheet" type="text/css" type='text/css'/>
+    <script src="msgpackr.js"></script>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+  </head>
+  <body>
+    <div class="loader">Loading...</div>
+
+    <div class="login-menu hidden">
+      <div class="input-area">
+        <div class="title login-title" stroke="Create Account"></div>
+        <div class="username-label" stroke="Username"></div>
+        <input class="textbox username" type="text" tabindex="-1" maxlength="16" autocomplete="off" spellcheck="false">
+        <div class="spacer"></div>
+        <div class="password-label" stroke="Password"></div>
+        <input class="textbox password" type="password" tabindex="-1" autocomplete="off" spellcheck="false">
+        <!--<div class="betakey-label" stroke="Beta Key"></div>
+        <input class="textbox betakey" type="text" tabindex="-1" autocomplete="off" spellcheck="false">-->
+
+        <div class="btn login-switch-btn">
+          <span stroke="Switch to Login" class="login-switch-text"></span>
+        </div>
+        <div class="btn send-btn">
+          <span stroke="Create Account" class="send-text"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu">
+      <div class="grid">
+        <div class="nick-info" stroke="This pretty flower is called..."></div>
+        <input class="textbox nickname" type="text" tabindex="-1" maxlength="16" autocomplete="off" spellcheck="false">
+        <div class="btn play-btn">
+          <span stroke="Play" class="play-text"></span>
+        </div>
+      </div>
+      <div class="links">
+        <div id="settingsButton">
+          <img src="gfx/gear.png" draggable="false" width="35" height="35">
+        </div>
+        <div id="discordButton">
+          <a href="https://discord.gg/wJJPU9c6zW" target="_blank" title="Join our Community!">
+            <img src="gfx/discord.png" draggable="false" width="35" height="35">
+          </a>
+        </div>
+        <div id="editorButton">
+          <a href="https://flowr.fun/editor" target="_blank" title="Check out the Editor!">
+            <img id="editorImg" src="gfx/hammer.svg" draggable="false" width="32" height="32">
+          </a>
+        </div>
+        <div id="changelogButton">
+          <img src="gfx/scroll.png" draggable="false" width="24" height="24">
+        </div>
+        
+        <!-- <div id="florrButton">
+          <a href="https://florr.io/" target="_blank" title="Check out the game this was based on, florr.io!">
+            <img id="editorImg" src="gfx/flower.png" draggable="false" width="32" height="32">
+          </a>
+        </div> -->
+        
+      </div>
+    </div>
+
+    <div class="captcha hidden">
+      <div class="h-captcha" data-sitekey="6128d50a-93ad-4839-8162-23621a397c47"></div>
+    </div>
+
+    <div class="chatContainer hidden">
+      <input class="chat" type="text" autocomplete="off" spellcheck="false" maxlength="100"> <!--placeholder="Type here to chat!"-->
+      <div class="chat-div">
+      </div>
+    </div>
+    
+      
+    <canvas id="canvas" width="1280" height="720" style="z-index: -1"></canvas>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+    <script src="constants.js"></script>
+    <script src="systems/input.js"></script>
+    <script src="systems/deadMenu.js"></script>
+    <script src="systems/streakMenu.js"></script>
+    <script src="petalContainer.js"></script>
+    <script src="systems/levelBar.js"></script>
+    <script src="util.js"></script>
+    <script src="systems/inventory.js"></script>
+    <script src="systems/squad.js"></script>
+    <script src="enemy.js"></script>
+    <script src="systems/enemyBox.js"></script>
+    <script src="petal.js"></script>
+    <script src="flower.js"></script>
+    <script src="systems/runGame.js"></script>
+    <script src="systems/processGameMessage.js"></script>
+    <script src="systems/processMenuMessage.js"></script>
+    <script src="systems/collectedMenu.js"></script>
+    <script src="systems/room.js"></script>
+    <script src="game.js"></script>
+    <script src="renderGame.js"></script>
+    <script src="systems/globalInventory.js"></script>
+    <script src="systems/craftingMenu.js"></script>
+    <script src="systems/mobGallery.js"></script>
+    <script src="systems/changelog.js"></script>
+    <script src="render.js"></script>
+    <script src="sharedWithEditor.js"></script>
+    <script src="stats.js"></script>
+    <script src="systems/statsBox.js"></script>
+    <script src="systems/importBiomeData.js"></script>
+    <script src="systems/importEditorBiomes.js"></script>
+    <script src="systems/biomeManager.js"></script>
+    <script src="systems/settingsMenu.js"></script>
+    <script src="client.js"></script>
+    <script src="systems/account.js"></script>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9076bdc299cba017',t:'MTczNzc5MjE0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
